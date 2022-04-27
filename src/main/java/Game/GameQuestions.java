@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class GameQuestions {
-    static String nombre="";  //creacion variables de clase 
+    static String nombre="";  //creacion variables de clase
     static int puntaje=0;
     public static void main(String[] args) throws IOException { 
         while (true){
@@ -20,10 +20,9 @@ public class GameQuestions {
             int incremento=2000;
             puntaje=0;
             int puntajeAcumulado=0;
-            System.out.println("Seleccione que desea hacer");
-            System.out.println("1.Iniciar Juego");
-            System.out.println("2.Configurar preguntas");
-            System.out.println("3.Jugador");
+            System.out.println("1.Jugar");
+            System.out.println("2.Crear preguntas");
+            System.out.println("3.Ingresar mi nombre");
             Scanner opcionRespuesta=new Scanner(System.in);
             String opcion=opcionRespuesta.nextLine();
             System.out.println(opcion);
@@ -45,3 +44,36 @@ public class GameQuestions {
 
             String fichCategoria5="Preguntas/"+"Cat5";
             File ficheroCategoria5=new File(fichCategoria5);
+            
+            if(opcion.equals("1")){
+
+                if(nombre.equals("")){
+                    System.out.println("Si es primera vez que juegas, debes ingresar el nombre");
+                }    
+                else{
+                    
+                    
+                    
+                    if(ficheroCategoria.exists()==false | //creando ficheros/persistencia de datos
+                            ficheroCategoria1.exists()==false | 
+                            ficheroCategoria2.exists()==false | 
+                            ficheroCategoria3.exists()==false | 
+                            ficheroCategoria4.exists()==false | 
+                            ficheroCategoria5.exists()==false){
+                        System.out.println("Ingresa las categorias");
+                    }    
+                    else{
+                        File[] listaCat1= ficheroCategoria1.listFiles();
+                        File[] listaCat2= ficheroCategoria2.listFiles();
+                        File[] listaCat3= ficheroCategoria3.listFiles();
+                        File[] listaCat4= ficheroCategoria4.listFiles();
+                        File[] listaCat5= ficheroCategoria5.listFiles();
+                    
+                        if(listaCat1.length<=4 | listaCat2.length<=4 | listaCat3.length<=4 | listaCat4.length<=4 | listaCat5.length<=4){
+                            System.out.println("Completa minimo 5 preguntas por categoria");
+                            System.out.println("Categoria 1: "+listaCat1.length);
+                            System.out.println("Categoria 2: "+listaCat2.length);
+                            System.out.println("Categoria 3: "+listaCat3.length);
+                            System.out.println("Categoria 4: "+listaCat4.length);
+                            System.out.println("Categoria 5: "+listaCat5.length);
+                        }
