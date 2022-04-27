@@ -77,3 +77,132 @@ public class GameQuestions {
                             System.out.println("Categoria 4: "+listaCat4.length);
                             System.out.println("Categoria 5: "+listaCat5.length);
                         }
+                        else{
+                            while(ronda<=5){
+                                System.out.println("RONDA: "+ronda);
+                                System.out.println("PUNTAJE: "+puntaje);
+
+                                System.out.println("Desea continuar: Digite 1 para si y 2 para no");
+                                
+                                Scanner opcionSeguir=new Scanner(System.in);
+                                String seguir=opcionSeguir.nextLine();
+                                if (seguir.equals("1")){
+                                    int numPreguntas=0;
+                                    if(ronda==1){
+                                        numPreguntas=listaCat1.length;
+                                    }
+                                    if(ronda==2){
+                                        numPreguntas=listaCat2.length;
+                                    }
+                                    if(ronda==3){
+                                        numPreguntas=listaCat3.length;
+                                    }
+                                    if(ronda==4){
+                                        numPreguntas=listaCat4.length;
+                                    }
+                                    if(ronda==5){
+                                        numPreguntas=listaCat5.length;
+                                    }
+                                
+                                    int numeroPregunta = (int)(Math.random()*numPreguntas+1);
+
+                                    BufferedReader pregunta;
+                                    try {
+                                        pregunta = new BufferedReader(new FileReader("Preguntas/"+"Categoria"+ronda+"/"+numeroPregunta+".csv"));
+                                        String opciones = pregunta.readLine();
+                                        String [] listaOpciones = opciones.split(",");
+                                        System.out.println("Pregunta: "+listaOpciones[0]);
+                                        System.out.println("Opcion 1: "+listaOpciones[1]);
+                                        System.out.println("Opcion 2: "+listaOpciones[2]);
+                                        System.out.println("Opcion 3: "+listaOpciones[3]);
+                                        System.out.println("Opcion 4: "+listaOpciones[4]);
+                                        System.out.println("Ingrese la respuesta");
+                                        Scanner opcionResp=new Scanner(System.in);
+                                    
+                                        String opcRespuesta=opcionResp.nextLine();
+                                        String respuestaArchivo=(listaOpciones[5]);
+                                        
+                                        if(opcRespuesta.equals(respuestaArchivo)){
+
+                                            if(ronda==5){
+                                                ronda=1;
+                                                pregunta.close();
+                                                puntaje+=incremento;
+                                                incremento=2000;
+                                                if(puntaje>puntajeAcumulado){
+
+
+                                                    BufferedWriter docJugador;
+                                                    docJugador=new BufferedWriter(new FileWriter("Registro Jugadores/"+nombre+".csv"));
+
+                                                    docJugador.write("Jugador,Puntaje\n");
+                                                    docJugador.write(nombre+","+puntaje);
+                                                    docJugador.close();
+
+                                                    pregunta.close();
+                                                    System.out.println("Respuesta correcta");
+                                                    System.out.println("GANASTE!!");
+                                                    break;
+                                                }    
+                                            }
+                                            else{
+                                                System.out.println("Respuesta correcta");
+                                                ronda+=1;
+
+                                                puntaje+=incremento;
+                                                incremento+=2000;
+                                                pregunta.close();
+                                                continue;
+                                            }
+                                        }
+                                        else{
+
+                                            System.out.println("Respuesta incorrecta, intentalo de nuevo");
+                                            pregunta.close();
+                                            puntaje=0;
+                                            ronda=1;
+                                            incremento=2000;
+                                            break;
+                                        }
+                                    
+                                        
+                                    } 
+                                    
+                                    catch (FileNotFoundException ex) {
+                                        Logger.getLogger(GameQuestions.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    
+
+                                    
+                                    
+                                    
+                                    
+                                    
+                                }
+                                else{
+                                    ronda=1;
+
+                                    incremento=2000;
+                                    if(puntaje>puntajeAcumulado){
+                                        
+                                        BufferedWriter docJugador;
+                                        docJugador=new BufferedWriter(new FileWriter("Registro Jugadores/"+nombre+".csv"));
+                                                
+                                        docJugador.write("Jugador,Puntaje\n");
+                                        docJugador.write(nombre+","+puntaje);
+                                        docJugador.close();
+                                    
+                               
+                                        break; 
+                                    }    
+                                    else{
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                    
+            
+            }
