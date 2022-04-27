@@ -27,7 +27,7 @@ public class IngresarJugador {
         docJugador.write("Jugador,Puntaje\n");
         docJugador.write(nombre+","+puntaje);
         docJugador.close();
-        System.out.println("Jugador creado");     
+         
     }   
     
 }
