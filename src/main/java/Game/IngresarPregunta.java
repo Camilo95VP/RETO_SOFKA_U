@@ -15,7 +15,7 @@ public class IngresarPregunta {
     String respuesta;
     String pregunta;
     public IngresarPregunta(String cate,String pre,String opc1,String opc2,String opc3,String opc4,String res) throws IOException{
-        this.categoria=cate;
+        this.categoria=cate;  //constructor clase pregunta
         this.pregunta=pre;
         this.opcion1=opc1;
         this.opcion2=opc2;
@@ -24,11 +24,11 @@ public class IngresarPregunta {
         this.respuesta=res;
         
         
-        String fichCategoria="Preguntas";
+        String fichCategoria="Preguntas"; //Path de carpeta de preguntas
         File ficheroJ=new File(fichCategoria);
     
         if(ficheroJ.exists()==false){
-            ficheroJ.mkdirs();
+            ficheroJ.mkdirs(); // Creacion de carpeta preguntas
         }
         
         String fichCategoriaEsp="Preguntas/Cat"+categoria;
@@ -46,7 +46,7 @@ public class IngresarPregunta {
         
         preguntaEscrita.write(pregunta+","+opcion1+","+opcion2+","+opcion3+","+opcion4+","+respuesta);
         preguntaEscrita.close();
+     }
     }
-        
                 
-    }
+   
