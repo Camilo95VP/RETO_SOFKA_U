@@ -109,7 +109,7 @@ public class GameQuestions {
 
                                     BufferedReader pregunta;
                                     try {
-                                        pregunta = new BufferedReader(new FileReader("Preguntas/"+"Categoria"+ronda+"/"+numeroPregunta+".csv"));
+                                        pregunta = new BufferedReader(new FileReader("Preguntas/"+"Cat"+ronda+"/"+numeroPregunta+".csv"));
                                         String opciones = pregunta.readLine();
                                         String [] listaOpciones = opciones.split(",");
                                         System.out.println("Pregunta: "+listaOpciones[0]);
