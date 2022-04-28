@@ -77,6 +77,7 @@ public class GameQuestions {
                             System.out.println("Categoria 4: "+listaCat4.length);
                             System.out.println("Categoria 5: "+listaCat5.length);
                         }
+                        //_____________________________________________________________________________________________________
                         else{
                             while(ronda<=5){
                                 System.out.println("RONDA: "+ronda);
@@ -205,8 +206,10 @@ public class GameQuestions {
                 }
                     
             
-            
-if(opcion.equals("2")){
+            }
+               //_____________________________________________________________________________________________________
+        
+            if(opcion.equals("2")){
 
                 System.out.println("Que categoria deseas para la pregunta: 1,2,3,4 ó 5"); //ingresando valores por consola
                 Scanner opc=new Scanner(System.in);
@@ -260,9 +263,7 @@ if(opcion.equals("2")){
                     puntajeAcumulado=puntaje;
                     docJugador.close();
                 }
-
             }
         }
     }
-  }
 }
